@@ -4,6 +4,11 @@ from api_back_end import api, db
 from Modulos.models import Crm
 
 
+@api.route('/')
+def desk():
+    return '<div><h1>API deve ser acessada apenas via software</h1></div>'
+
+
 @api.route('/auth', methods=['POST', ])
 def auth():
     print('entrou')

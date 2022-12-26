@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 
-api = Flask(__name__)
+api = Flask("api_bd_erp")
 api.config.from_pyfile('./Modulos/configs.py')
 
 db = SQLAlchemy(api)

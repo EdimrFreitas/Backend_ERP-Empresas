@@ -5,6 +5,6 @@ SQLALCHEMY_DATABASE_URI = '{SGBD}://{usuario}:{senha}@{servidor}/{database}'.for
     usuario='root',
     senha='048Edimar258',
     servidor='127.0.0.1',
-    database='erp-empresas-bd'
+    database='dimas_sis'
 )
 

@@ -1,8 +1,8 @@
 SECRET_KEY = 'ERP-Empresas'
 
 SGBD = 'mysql+mysqlconnector'
-usuario = 'root'
-senha = '048Edimar258'
+usuario = 'api-erp-empresas'
+senha = 'ERP-Empresas!0512'
 servidor = '127.0.0.1'
-database = 'dimas_ss'
+database = 'dimas_sis'
 SQLALCHEMY_DATABASE_URI = f'{SGBD}://{usuario}:{senha}@{servidor}/{database}'

@@ -1,25 +1,30 @@
-from getpass import getpass
 from os import name
 
-import Modulos.configs
-
-from Configurador.configs_linux import Linux
+from Instalador_OS.linux import Linux
 
 print("iniciando as configurações...", end='\n\n\n')
 
 if name == 'posix':
     Linux()
 
+print('Criando arquivo de configurações...')
+
+
+from getpass import getpass
 
 from flask_bcrypt import generate_password_hash
 import mysql.connector
-from mysql.connector import errorcode
+from mysql.connector import errorcode, Error
+
+import Modulos.configs
 
 
 print('Conectando...')
 conn = None
+
 print('Digite o usuário do banco de dados:', end=' ')
 usuario_inicial = input()
+
 senha_inicial = None
 if name == 'nt':
     senha_inicial = input('Digite a senha: ')
@@ -28,11 +33,11 @@ elif name == 'posix':
 
 try:
     conn = mysql.connector.connect(
-        host='localhost',
+        host='127.0.0.1',
         user=usuario_inicial,
         password=senha_inicial
     )
-except mysql.connector.Error as err:
+except Error as err:
     if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
         print('Existe algo errado no nome de usuário ou senha')
     else:
@@ -74,7 +79,7 @@ try:
         user=usuario_final,
         password=senha_final
     )
-except mysql.connector.Error as err:
+except Error as err:
     if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
         print('Existe algo errado no nome de usuário ou senha')
     else:
@@ -133,7 +138,7 @@ for tabela_nome in TABELAS:
     try:
         print('Criando tabela {}:'.format(tabela_nome), end=' ')
         cursor.execute(tabela_sql)
-    except mysql.connector.Error as err:
+    except Error as err:
         if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
             print('Já existe')
         else:

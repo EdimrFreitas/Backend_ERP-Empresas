@@ -1,17 +1,20 @@
 from getpass import getpass
 from os import name
 
-from flask_bcrypt import generate_password_hash
-import mysql.connector
-from mysql.connector import errorcode
-
 import Modulos.configs
+
 from Configurador.configs_linux import Linux
 
 print("iniciando as configurações...", end='\n\n\n')
 
 if name == 'posix':
     Linux()
+
+
+from flask_bcrypt import generate_password_hash
+import mysql.connector
+from mysql.connector import errorcode
+
 
 print('Conectando...')
 conn = None
